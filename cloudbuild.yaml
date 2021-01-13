@@ -1,0 +1,103 @@
+# The PROJECT_ID and SHORT_SHA variables are automatically replaced by Cloud Build.
+steps:
+  # [START GITHUB SETUP]
+  - id: Decrypting GitHub RSA Key
+    name: 'gcr.io/cloud-builders/gcloud'
+    args:
+    - kms
+    - decrypt
+    - --ciphertext-file=.github_keys/id_rsa.enc
+    - --plaintext-file=/root/.ssh/id_rsa
+    - --location=global
+    - --keyring=ci-cd-keyring
+    - --key=github-key
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
+
+  - id: Setting up git with key and domain.
+    name: 'gcr.io/cloud-builders/git'
+    entrypoint: 'bash'
+    args:
+    - '-c'
+    - |
+      chmod 600 /root/.ssh/id_rsa
+      mv .github_keys/config /root/.ssh/config
+      chmod 600 /root/.ssh/config
+      mv .github_keys/known_hosts /root/.ssh/known_hosts
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
+  # [END GITHUB SETUP]
+
+  # [START CI]
+  - id: "Building Image"
+    name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - "-t"
+      - "us.gcr.io/$PROJECT_ID/viggio-backend:$SHORT_SHA"
+      - "-f"
+      - Dockerfile.production
+      - "."
+
+  - id: "Pushing image to Container Registry"
+    name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - "us.gcr.io/$PROJECT_ID/viggio-backend:$SHORT_SHA"
+  # [END CI]
+
+  # [START CD TRIGGER]
+  - id: Cloning infra repository
+    name: "gcr.io/cloud-builders/git"
+    entrypoint: /bin/sh
+    args:
+    - "-c"
+    - |
+      git clone git@github.com:michel-rodrigues/kubernetes.git && \
+      cd kubernetes && \
+      git config user.name Michel Rodrigues && \
+      git config user.email michel.rodrigues86@yahoo.com.br && \
+      git checkout candidate
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
+
+  - id: Generating django deployment manifest
+    name: "gcr.io/cloud-builders/gcloud"
+    entrypoint: /bin/sh
+    args:
+    - '-c'
+    - |
+      cd kubernetes && \
+      sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" django/django-deployment.yaml.template | \
+      sed "s/COMMIT_SHA/${SHORT_SHA}/g" > django/django-deployment.yaml
+
+  - id: Generating celery deployment manifest
+    name: "gcr.io/cloud-builders/gcloud"
+    entrypoint: /bin/sh
+    args:
+    - "-c"
+    - |
+      cd kubernetes && \
+      sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" celery/celery-deployment.yaml.template | \
+      sed "s/COMMIT_SHA/${SHORT_SHA}/g" > celery/celery-deployment.yaml
+
+  - id: Pushing manifests
+    name: "gcr.io/cloud-builders/gcloud"
+    entrypoint: /bin/sh
+    args:
+    - "-c"
+    - |
+      set -x && \
+      cd kubernetes && \
+      git add django/django-deployment.yaml celery/celery-deployment.yaml && \
+      git commit -m "Deploying image gcr.io/${PROJECT_ID}/viggio-backend:${SHORT_SHA}
+      Built from commit ${COMMIT_SHA} of repository viggio-backend
+      Author: $(git log --format='%an <%ae>' -n 1 HEAD)" && \
+      git push origin candidate
+    volumes:
+    - name: 'ssh'
+      path: /root/.ssh
+  # [END CD TRIGGER]

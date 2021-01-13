@@ -1,0 +1,102 @@
+[
+{
+    "model": "categories.category",
+    "pk": 11,
+    "fields": {
+        "created_at": "2019-10-08T02:34:19.264Z",
+        "updated_at": "2019-10-08T02:34:19.264Z",
+        "name": "Youtubers",
+        "slug": "youtubers"
+    }
+},
+{
+    "model": "categories.category",
+    "pk": 12,
+    "fields": {
+        "created_at": "2019-10-08T02:34:19.264Z",
+        "updated_at": "2019-10-08T02:34:19.264Z",
+        "name": "Influencers",
+        "slug": "influencers"
+    }
+},
+{
+    "model": "categories.category",
+    "pk": 13,
+    "fields": {
+        "created_at": "2019-10-08T02:34:19.264Z",
+        "updated_at": "2019-10-08T02:34:19.264Z",
+        "name": "Atores",
+        "slug": "actors"
+    }
+},
+{
+    "model": "categories.category",
+    "pk": 14,
+    "fields": {
+        "created_at": "2019-10-08T02:34:19.264Z",
+        "updated_at": "2019-10-08T02:34:19.264Z",
+        "name": "Comediantes",
+        "slug": "comedians"
+    }
+},
+{
+    "model": "categories.category",
+    "pk": 15,
+    "fields": {
+        "created_at": "2019-10-08T02:34:19.264Z",
+        "updated_at": "2019-10-08T02:34:19.264Z",
+        "name": "Dubladores",
+        "slug": "voice_actors"
+    }
+},
+{
+    "model": "categories.category",
+    "pk": 16,
+    "fields": {
+        "created_at": "2019-10-08T02:34:19.264Z",
+        "updated_at": "2019-10-08T02:34:19.264Z",
+        "name": "Atletas",
+        "slug": "athletes"
+    }
+},
+{
+    "model": "categories.category",
+    "pk": 17,
+    "fields": {
+        "created_at": "2019-10-08T02:34:19.264Z",
+        "updated_at": "2019-10-08T02:34:19.264Z",
+        "name": "M\u00fasicos",
+        "slug": "musicians"
+    }
+},
+{
+    "model": "categories.category",
+    "pk": 18,
+    "fields": {
+        "created_at": "2019-10-08T02:34:19.264Z",
+        "updated_at": "2019-10-08T02:34:19.264Z",
+        "name": "Apresentadores",
+        "slug": "presenters"
+    }
+},
+{
+    "model": "categories.category",
+    "pk": 19,
+    "fields": {
+        "created_at": "2019-10-08T02:34:19.264Z",
+        "updated_at": "2019-10-08T02:34:19.264Z",
+        "name": "Pol\u00edticos",
+        "slug": "politicians"
+    }
+},
+{
+    "model": "categories.category",
+    "pk": 20,
+    "fields": {
+        "created_at": "2019-10-08T02:34:19.264Z",
+        "updated_at": "2019-10-08T02:34:19.264Z",
+        "name": "Caridade",
+        "slug": "charity"
+    }
+}
+]

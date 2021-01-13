@@ -1,0 +1,60 @@
+version: '3.7'
+
+services:
+  django:
+    container_name: viggio_backend
+    build: .
+    image: viggio_backend:latest
+    volumes:
+      - ./app/:/usr/src/app/
+      - static_volume:/usr/src/staticfiles
+      - media_volume:/usr/src/mediafiles
+    ports:
+      - 8000:8000
+    env_file: .env
+    depends_on:
+      - postgresql
+      - redis
+    networks:
+      viggio-network:
+        ipv4_address: 172.28.0.6
+  postgresql:
+    container_name: viggio_db_backend
+    image: postgres:11.2-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file: .env.db
+    networks:
+      viggio-network:
+        ipv4_address: 172.28.0.7
+  redis:
+    container_name: viggio_redis_backend
+    image: redis:5.0.5-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+    sysctls:
+      - net.core.somaxconn=1024
+    ports:
+      - 6379:6379
+    networks:
+      viggio-network:
+        ipv4_address: 172.28.0.8
+
+
+networks:
+  viggio-network:
+    external: true
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+
+volumes:
+  postgres_data:
+     name: viggio_db_backend
+  redis_data:
+     name: viggio_redis_backend
+  static_volume:
+     name: viggio_staticfiles_backend
+  media_volume:
+     name: viggio_mediafiles_backend

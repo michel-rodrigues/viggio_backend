@@ -1,0 +1,125 @@
+[
+{
+    "model": "talents.talent",
+    "pk": 1,
+    "fields": {
+        "created_at": "2019-10-08T02:34:19.243Z",
+        "updated_at": "2019-10-08T02:34:19.243Z",
+        "user": 1,
+        "phone_number": "987654321",
+        "area_code": "11",
+        "main_social_media": "Instagram",
+        "social_media_username": "socialusername",
+        "number_of_followers": 29875134,
+        "price": "35.00",
+        "description": "Bacon ipsum dolor amet porchetta brisket andouille, frankfurter pastrami corned beef drumstick tri-tip. Kevin boudin kielbasa bresaola andouille biltong, sausage spare ribs shank.",
+        "available": true,
+        "categories": [
+            13,
+            14
+        ]
+    }
+},
+{
+    "model": "talents.talent",
+    "pk": 2,
+    "fields": {
+        "created_at": "2019-10-08T02:34:19.243Z",
+        "updated_at": "2019-10-08T02:34:19.243Z",
+        "user": 2,
+        "phone_number": "987654321",
+        "area_code": "11",
+        "main_social_media": "Instagram",
+        "social_media_username": "socialusername",
+        "number_of_followers": 29875134,
+        "price": "24.00",
+        "description": "Burgdoggen pastrami sausage leberkas, shankle turducken ham kevin rump tongue tenderloin strip steak.",
+        "available": true,
+        "categories": [
+            13
+        ]
+    }
+},
+{
+    "model": "talents.talent",
+    "pk": 3,
+    "fields": {
+        "created_at": "2019-10-08T02:34:19.243Z",
+        "updated_at": "2019-10-08T02:34:19.243Z",
+        "user": 3,
+        "phone_number": "987654321",
+        "area_code": "11",
+        "main_social_media": "Instagram",
+        "social_media_username": "socialusername",
+        "number_of_followers": 29875134,
+        "price": "32.00",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
+        "available": true,
+        "categories": [
+            13
+        ]
+    }
+},
+{
+    "model": "talents.talent",
+    "pk": 4,
+    "fields": {
+        "created_at": "2019-10-08T02:34:19.243Z",
+        "updated_at": "2019-10-08T02:34:19.243Z",
+        "user": 4,
+        "phone_number": "987654321",
+        "area_code": "11",
+        "main_social_media": "Instagram",
+        "social_media_username": "socialusername",
+        "number_of_followers": 29875134,
+        "price": "48.00",
+        "description": "Ullamcorper dignissim cras tincidunt lobortis. Magna fermentum iaculis eu non diam phasellus vestibulum. Platea dictumst quisque sagittis purus sit amet volutpat.",
+        "available": true,
+        "categories": [
+            16
+        ]
+    }
+},
+{
+    "model": "talents.talent",
+    "pk": 5,
+    "fields": {
+        "created_at": "2019-10-08T02:34:19.243Z",
+        "updated_at": "2019-10-08T02:34:19.243Z",
+        "user": 5,
+        "phone_number": "987654321",
+        "area_code": "11",
+        "main_social_media": "Instagram",
+        "social_media_username": "socialusername",
+        "number_of_followers": 29875134,
+        "price": "23.00",
+        "description": "Lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam.Neque vitae tempus quam pellentesque nec nam aliquam.",
+        "available": true,
+        "categories": [
+            13,
+            15
+        ]
+    }
+},
+{
+    "model": "talents.talent",
+    "pk": 6,
+    "fields": {
+        "created_at": "2019-10-08T02:34:19.243Z",
+        "updated_at": "2019-10-08T02:34:19.243Z",
+        "user": 6,
+        "phone_number": "987654321",
+        "area_code": "11",
+        "main_social_media": "Instagram",
+        "social_media_username": "socialusername",
+        "number_of_followers": 29875134,
+        "price": "37.00",
+        "description": "Pharetra sit amet aliquam id. Enim ut tellus elementum sagittis vitae et leo. Posuere sollicitudin aliquam ultrices sagittis orci. Amet risus nullam eget felis.",
+        "available": true,
+        "categories": [
+            13,
+            16
+        ]
+    }
+}
+]
