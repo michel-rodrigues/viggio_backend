@@ -10,4 +10,4 @@ There is a command to generate a CSV file with the amounts to be paid for the Ta
 
 The development environment was compartmentalized using Docker Compose and the deployment flow was automated in the GitOps style with Cloud Build, with load tests for configuring machine sizing and autoscale.
 
-[This repository is a copy of the private repository because some sensitive information was commited before being extracted to environment variables and configuration files]
+[*This repository is a copy of the private repository because some sensitive information was commited before being extracted to environment variables and configuration files*]
